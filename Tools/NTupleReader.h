@@ -194,7 +194,7 @@ public:
     void disableUpdate();
     void printTupleMembers(FILE *f = stdout) const;
 
-    void setConvertFloatingPointVectors(const bool doubleToFloat = true, const bool floatToDouble = false, const bool intToInt = false);
+    void setConvertFloatingPointVectors(const bool doubleToFloat = true, const bool floatToDouble = false, const bool intToInt = false, const bool floatToInt = false);
 
     void setConvertFloatingPointScalars(const bool doubleToFloat = true, const bool floatToDouble = false, const bool intToFloat = true);
 
@@ -426,6 +426,8 @@ private:
                 typen='d';
             if( typeid(typename std::remove_pointer<T>::type) == typeid(std::vector<int>) && tuple_iter->second.type == typeid(std::vector<unsigned int>))
                 typen='i';
+            if( typeid(typename std::remove_pointer<T>::type) == typeid(std::vector<int>) && tuple_iter->second.type == typeid(std::vector<float>))
+                typen='a';
 
             std::string newname = varName+"___" + typen;
             auto tuple_iter = branchVecMap_.find(newname);

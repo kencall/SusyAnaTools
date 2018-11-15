@@ -144,10 +144,7 @@ public:
         {
             isData = (tr.checkBranch("genDecayPdgIdVec")) ? false : true;
             JetsVec = "jetsLVec";
-<<<<<<< HEAD
 //            BJetsVec = "recoJetsBtag_0";
-=======
->>>>>>> 18cdfc621b2f6e2ef8d1f190469d6e95925cce35
             BJetsVec = "recoJetsCSVv2";
             JetsFlavor = "recoJetsFlavor";
         }

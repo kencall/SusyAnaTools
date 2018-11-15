@@ -388,7 +388,7 @@ std::vector<std::string> NTupleReader::getTupleSpecs(const std::string& varName)
     return specs;
 }
 
-void NTupleReader::setConvertFloatingPointVectors(const bool doubleToFloat, const bool floatToDouble, const bool intToInt)
+void NTupleReader::setConvertFloatingPointVectors(const bool doubleToFloat, const bool floatToDouble, const bool intToInt, const bool floatToInt)
 {
     if(doubleToFloat) 
     {
@@ -419,6 +419,16 @@ void NTupleReader::setConvertFloatingPointVectors(const bool doubleToFloat, cons
         {
             if (i.second.type == typeid(std::vector<unsigned int>))
                 registerFunction(std::bind(&NTupleReader::castVector<unsigned int, int>, std::placeholders::_1, i.first, 'i'));
+        }
+    }
+
+    if(floatToInt) 
+    {
+        convertHackActive_ = true;
+        for(const auto& i : branchVecMap_)
+        {
+            if (i.second.type == typeid(std::vector<float>))
+                registerFunction(std::bind(&NTupleReader::castVector<float, int>, std::placeholders::_1, i.first, 'a'));
         }
     }
 }

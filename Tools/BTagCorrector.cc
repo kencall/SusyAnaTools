@@ -20,7 +20,7 @@
 // https://twiki.cern.ch/twiki/bin/view/CMS/BTagSFMethods
 /***********************************************************************************/
 
-std::vector<float>* BTagCorrector::GetCorrections(const std::vector<TLorentzVector> *Jets, const std::vector<int> *Jets_flavor)
+std::vector<float>* BTagCorrectorTemplate::GetCorrections(const std::vector<TLorentzVector> *Jets, const std::vector<int> *Jets_flavor)
 {
 
     if(Jets->size() != Jets_flavor->size()) std::cout << "Jets vector is not the same as Jets_flavor vector " << Jets->size() << " " << Jets_flavor->size() << std::endl;
